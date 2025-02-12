@@ -571,7 +571,6 @@
   function extractCepValuesFromResponse$1(responseObject) {
     var _responseObject$cep;
 
-    console.log(responseObject);
     return {
       cep: responseObject === null || responseObject === void 0 ? void 0 : (_responseObject$cep = responseObject.cep) === null || _responseObject$cep === void 0 ? void 0 : _responseObject$cep.replace('-', ''),
       state: responseObject === null || responseObject === void 0 ? void 0 : responseObject.uf,
@@ -827,7 +826,8 @@
       })).then(function (result) {
         return result.filter(function (r) {
           return r.status === 'fulfilled';
-        }).reduce(function (acc, curr) {
+        }).reduce(function (acc, _ref) {
+          var curr = _ref.value;
           return _objectSpread2(_objectSpread2({}, curr), acc);
         }, {});
       });
@@ -838,7 +838,8 @@
     }).then(function (result) {
       return result.filter(function (r) {
         return r.status === 'fulfilled';
-      }).reduce(function (acc, curr) {
+      }).reduce(function (acc, _ref2) {
+        var curr = _ref2.value;
         return _objectSpread2(_objectSpread2({}, curr), acc);
       }, {});
     }));
@@ -856,10 +857,10 @@
     throw aggregatedErrors;
   }
 
-  function throwApplicationError$5(_ref) {
-    var message = _ref.message,
-        type = _ref.type,
-        errors = _ref.errors;
+  function throwApplicationError$5(_ref3) {
+    var message = _ref3.message,
+        type = _ref3.type,
+        errors = _ref3.errors;
     throw new CepPromiseError({
       message: message,
       type: type,
