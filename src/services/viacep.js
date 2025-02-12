@@ -42,6 +42,7 @@ function checkForViaCepError (responseObject) {
 }
 
 function extractCepValuesFromResponse (responseObject) {
+  console.log(responseObject)
   return {
     cep: responseObject?.cep?.replace('-', ''),
     state: responseObject?.uf,
